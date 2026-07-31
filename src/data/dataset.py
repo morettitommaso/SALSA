@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class MultiFidelityDataset:
 
     def __init__(
@@ -28,7 +29,7 @@ class MultiFidelityDataset:
     def candidate_points(self):
         
         """
-        ritorna anche l'indice del punto nel daatset completo così
+        ritorna anche l'indice del punto nel dataset completo così
         da non doverlo ricercare di nuovo successivamente
         """
 

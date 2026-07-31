@@ -57,7 +57,6 @@ class Evaluator:
     def evaluate(self, surrogate):
 
         X_test = self.generate_test_points()
-
         y_true = self.problem.evaluate_high(X_test)
 
         mean, std = surrogate.predict(

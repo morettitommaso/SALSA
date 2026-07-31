@@ -7,11 +7,8 @@ class AcquisitionFunction(ABC):
     def compute(
 
         self,
-
         surrogate,
-
         X_candidates,
-
         dataset
 
     ):

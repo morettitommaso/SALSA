@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class InitialDesign(ABC):
 
     @abstractmethod
@@ -13,4 +14,3 @@ class InitialDesign(ABC):
         X_H
         y_H
         """
-        pass

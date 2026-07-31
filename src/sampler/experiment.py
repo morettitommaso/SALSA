@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Experiment:
 
     def __init__(
@@ -27,9 +28,9 @@ class Experiment:
         for i in range(self.budget):
             
             """
-
+            
             controlli:
-            - il budget deve essere minore del numero di LF points
+            il budget deve essere minore del numero di LF points
 
             """
 
@@ -39,8 +40,7 @@ class Experiment:
             # 2. fit surrogate
             self.surrogate.fit(self.dataset)
 
-
-            # salvo stato corrente del modello
+            # salvo stato corrente del modello (per grafico incertezza finale)
             X_test = self.evaluator.generate_test_points()
 
             _, std = self.surrogate.predict(

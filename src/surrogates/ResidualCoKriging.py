@@ -40,25 +40,15 @@ class ResidualCoKriging(Surrogate):
         )
 
 
-    def predict(
-
-        self,
-        X,
-        return_std=False
-
-    ):
+    def predict(self, X, return_std=False):
 
         if return_std:
 
             mean_low, std_low = self.gp_low.predict(
-                X,
-                return_std=True
-            )
+                X, return_std=True)
 
             mean_delta, std_delta = self.gp_delta.predict(
-                X,
-                return_std=True
-            )
+                X, return_std=True)
 
             mean = mean_low + mean_delta
             std = np.sqrt( std_low**2 + std_delta**2 )
@@ -72,24 +62,41 @@ class ResidualCoKriging(Surrogate):
             return mean_low + mean_delta
 
     
-    def update(
-
-        self,
-        X_new,
-        y_new
-
-    ):
+    def update(self, X_new, y_new):
 
         self.dataset.X_high = np.vstack(
-
             [self.dataset.X_high, X_new]
-
         )
 
         self.dataset.y_high = np.concatenate(
-
             [self.dataset.y_high, y_new]
-
         )
 
         self.fit(self.dataset)
+    
+    
+    def kernel(self, X1, X2=None):
+
+        K_low = self.gp_low.model.kernel_(X1, X2)
+        K_delta = self.gp_delta.model.kernel_(X1, X2)
+
+        return K_low + K_delta
+    
+    
+    def posterior_variance_after(
+        self,
+        X_query,
+        X_new
+    ):
+
+        var_low = self.gp_low.posterior_variance_after(
+            X_query,
+            X_new
+        )
+
+        var_delta = self.gp_delta.posterior_variance_after(
+            X_query,
+            X_new
+        )
+
+        return var_low + var_delta

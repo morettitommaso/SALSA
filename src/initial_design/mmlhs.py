@@ -106,6 +106,4 @@ def MaximinLHS(
             X = X_new
             best_distance = new_distance
 
-
-
     return X

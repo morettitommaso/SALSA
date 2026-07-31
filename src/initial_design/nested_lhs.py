@@ -1,6 +1,8 @@
 from scipy.stats import qmc
-from .kmedoids import KMedoids
+
 from .base import InitialDesign
+from .kmedoids import KMedoids
+
 
 class NestedLHS(InitialDesign):
 

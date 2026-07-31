@@ -1,7 +1,9 @@
 from scipy.stats import qmc
-from .mmlhs import MaximinLHS
-from .kmedoids import KMedoids
+
 from .base import InitialDesign
+from .kmedoids import KMedoids
+from .mmlhs import MaximinLHS
+
 
 class NestedMMLHS(InitialDesign):
 
