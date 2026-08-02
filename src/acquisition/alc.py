@@ -22,10 +22,6 @@ class alcSampling(AcquisitionFunction):
 
     def compute(self, surrogate, X_candidates, dataset=None):
 
-        """
-        abc123
-        """
-
         # evito di rigenerare LHS per ogni candidato
         if self.integration_points is None:
             self.integration_points = qmc.LatinHypercube(d=self.problem.dimension, seed=self.seed, optimization="random-cd").random(self.n_integration_points)
