@@ -1,7 +1,7 @@
 from scipy.stats import qmc
 
 from .base import InitialDesign
-from .kmedoids import KMedoids
+from .greedymaxmin import GreedyMaximin
 
 
 class NestedLHS(InitialDesign):
@@ -22,7 +22,7 @@ class NestedLHS(InitialDesign):
         X_L = qmc.LatinHypercube(d=problem.dimension, seed=self.seed, optimization="random-cd").random(self.n_low)
         X_L = qmc.scale(X_L, problem.bounds[:,0], problem.bounds[:,1])
 
-        idx = KMedoids(X_L, n_clusters=self.n_high, random_state=self.seed)
+        idx = GreedyMaximin(X_L, self.n_high, random_state=self.seed)
         X_H = X_L[idx]
         
         return {
