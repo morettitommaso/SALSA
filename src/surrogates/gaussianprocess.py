@@ -121,7 +121,7 @@ class GaussianProcess:
         updated_var = (
             var_query
             -
-            cov**2 / var_new
+            cov**2 / (var_new + 1e-12)
         )
 
         return updated_var
