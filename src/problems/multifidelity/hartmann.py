@@ -1,9 +1,9 @@
 import numpy as np
 
-from .base import Problem
+from .base import MultiFidelityProblem
 
 
-class Hartmann6D(Problem):
+class Hartmann6D(MultiFidelityProblem):
 
     def __init__(self):
         self.name = "Hartmann6D"

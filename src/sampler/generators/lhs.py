@@ -1,11 +1,9 @@
 from scipy.stats import qmc
 
-from src.data.dataset import Dataset
-
-from .base import InitialDesign
+from .base import CandidateGenerator
 
 
-class LHS(InitialDesign):
+class LHSCandidateGenerator(CandidateGenerator):
 
     def __init__(
         self,
@@ -21,6 +19,4 @@ class LHS(InitialDesign):
         X = qmc.LatinHypercube(d=problem.dimension, seed=self.seed, optimization="random-cd").random(self.n_points)
         X = qmc.scale(X, problem.bounds[:,0], problem.bounds[:,1])
 
-        y = problem.evaluate(X)
-
-        return Dataset(X=X, y=y)
+        return X

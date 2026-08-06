@@ -14,7 +14,7 @@ class Branin(Problem):
             [0, 15]
         ])
 
-    def evaluate_high(self, X):
+    def evaluate(self, X):
 
         x1 = X[:, 0]
         x2 = X[:, 1]
@@ -31,7 +31,3 @@ class Branin(Problem):
 
         return branin + bump
 
-
-    def evaluate_low(self, X):
-
-        return self.evaluate_high(X) * 0.7 + 2*np.sin(0.3*X[:,0])  

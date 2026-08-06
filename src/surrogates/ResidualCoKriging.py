@@ -4,6 +4,12 @@ from .base import Surrogate
 from .gaussianprocess import GaussianProcess
 
 
+class SimpleDataset:
+
+    def __init__(self, X, y):
+        self.X = X
+        self.y = y
+
 class ResidualCoKriging(Surrogate):
 
     def __init__(self):
@@ -18,9 +24,13 @@ class ResidualCoKriging(Surrogate):
         self.dataset = dataset
 
         # GP LOW
-        self.gp_low.fit(
+        low_dataset = SimpleDataset(
             dataset.X_low,
             dataset.y_low
+        )
+
+        self.gp_low.fit(
+            low_dataset
         )
 
         # costruzione residuo
@@ -32,11 +42,13 @@ class ResidualCoKriging(Surrogate):
         )
 
         # GP DELTA
-
-        self.gp_delta.fit(
+        delta_dataset = SimpleDataset(
             dataset.X_high,
             residual
+        )
 
+        self.gp_delta.fit(
+            delta_dataset
         )
 
 

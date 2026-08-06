@@ -77,7 +77,7 @@ class ActiveLearningPlotter:
         self,
         X_test,
         std,
-        X_high,
+        X_train,
         title="Predictive uncertainty"
     ):
         """
@@ -111,8 +111,8 @@ class ActiveLearningPlotter:
 
 
         plt.scatter(
-            X_high[:,0],
-            X_high[:,1],
+            X_train[:,0],
+            X_train[:,1],
             c="red",
             s=40,
             label="HF samples"
@@ -131,96 +131,6 @@ class ActiveLearningPlotter:
         plt.show()
 
 
-
-    def plot_uncertainty_evolution(
-        self,
-        history
-    ):
-        """
-        Plot uncertainty reduction during active learning.
-
-        history:
-        [
-            {
-            "X_high": ...,
-            "std": ...
-            },
-            ...
-        ]
-        """
-
-        if self.problem.dimension != 2:
-            raise ValueError(
-                "Only available for 2D problems"
-            )
-
-
-        fig, axes = plt.subplots(
-            1,
-            len(history),
-            figsize=(5*len(history),5)
-        )
-
-
-        vmax = max(
-            h["std"].max()
-            for h in history
-        )
-
-        vmin = min(
-            h["std"].min()
-            for h in history
-        )
-
-
-        for i,h in enumerate(history):
-
-            ax = axes[i]
-
-
-            n = int(np.sqrt(len(h["std"])))
-
-
-            X_test = h["X_test"]
-
-
-            X1 = X_test[:,0].reshape(n,n)
-            X2 = X_test[:,1].reshape(n,n)
-
-            STD = h["std"].reshape(n,n)
-
-
-            c = ax.contourf(
-                X1,
-                X2,
-                STD,
-                levels=30,
-                vmin=vmin,
-                vmax=vmax
-            )
-
-
-            ax.scatter(
-                h["X_high"][:,0],
-                h["X_high"][:,1],
-                c="red",
-                s=20
-            )
-
-
-            ax.set_title(
-                f"Iteration {i+1}"
-            )
-
-
-        fig.colorbar(
-            c,
-            ax=axes
-        )
-
-        plt.tight_layout()
-
-        plt.show()
 
 
 

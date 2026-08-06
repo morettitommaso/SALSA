@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import qmc
 
 
-class Evaluator:
+class SurrogateEvaluator:
 
     def __init__(
         self,
@@ -57,7 +57,7 @@ class Evaluator:
     def evaluate(self, surrogate):
 
         X_test = self.generate_test_points()
-        y_true = self.problem.evaluate_high(X_test)
+        y_true = self.problem.evaluate(X_test)
 
         mean, std = surrogate.predict(
             X_test,

@@ -1,9 +1,9 @@
 import numpy as np
 
-from .base import Problem
+from .base import MultiFidelityProblem
 
 
-class Currin(Problem):
+class Currin(MultiFidelityProblem):
 
     def __init__(self):
         self.name = "Currin"

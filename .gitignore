@@ -4,8 +4,4 @@ notebooks/01_getting_started_adaptive_sampling.ipynb
 notebooks/02_multi_fidelity_learning.ipynb
 notebooks/03_acquisition_functions_comparison.ipynb
 
-src/sampler/multifidelity.py
-
-src/data/multifidelity_dataset.py
-
 README.md

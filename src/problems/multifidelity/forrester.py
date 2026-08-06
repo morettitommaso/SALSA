@@ -1,9 +1,9 @@
 import numpy as np
 
-from .base import Problem
+from .base import MultiFidelityProblem
 
 
-class Forrester(Problem):
+class Forrester(MultiFidelityProblem):
 
     def __init__(self):
         self.name = "Forrester"

@@ -9,6 +9,7 @@ class Experiment:
         dataset,
         surrogate,
         acquisition,
+        generator,
         evaluator,
         budget
     ):
@@ -17,77 +18,46 @@ class Experiment:
         self.dataset = dataset
         self.surrogate = surrogate
         self.acquisition = acquisition
-        self.budget = budget
+        self.generator = generator
         self.evaluator = evaluator
+        self.budget = budget
 
 
     def run(self):
-
-        self.history = []
-
+        
+        history = []
         for i in range(self.budget):
-            
-            """
-            
-            controlli:
-            il budget deve essere minore del numero di LF points
-
-            """
-
-            # 1. punti LF non ancora HF
-            candidate_points, candidate_idx = self.dataset.candidate_points
-
-            # 2. fit surrogate
+        
             self.surrogate.fit(self.dataset)
 
-            # salvo stato corrente del modello (per grafico incertezza finale)
-            X_test = self.evaluator.generate_test_points()
+            candidates = self.generator.generate(self.problem)
 
-            _, std = self.surrogate.predict(
-                X_test,
-                return_std=True
-            )
-
-            self.history.append(
-                {
-                    "iteration": i,
-                    "X_test": X_test.copy(),
-                    "std": std.copy(),
-                    "X_high": self.dataset.X_high.copy(),
-                    "score": None
-                }
-            )
-
-            # 3. acquisition
-            score = self.acquisition.compute(
+            scores = self.acquisition.compute(
                 self.surrogate,
-                candidate_points,
+                candidates,
                 self.dataset
             )
 
-            # 4. selezione
-            selected = np.argmax(score)
-
-            selected_point = candidate_points[selected]
-            selected_idx = candidate_idx[selected]
-
-            # 5. valutazione HF
-            y_new = self.problem.evaluate_high(
-                selected_point.reshape(1, -1)
+            history.append(
+                {
+                    "iteration": i,
+                    "X": self.dataset.X.copy(),
+                    "scores": scores.copy()
+                }
             )
 
-            # 6. aggiorna dataset
-            self.dataset.add_high_fidelity(
-                selected_point,
-                y_new,
-                idx=selected_idx
-            )
+            idx = np.argmax(scores)
 
+            x_new = candidates[idx]
+            y_new = self.problem.evaluate(x_new.reshape(1, -1))
+
+            self.dataset.add(x_new, y_new)
+        
         # fit finale
         self.surrogate.fit(self.dataset)
 
         return {
             "surrogate": self.surrogate,
-            "dataset": self.dataset, # ritorna anche il dataset HF finale
-            "history": self.history
+            "dataset": self.dataset,
+            "history": history
         }

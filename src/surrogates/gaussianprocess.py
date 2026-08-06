@@ -27,8 +27,11 @@ class GaussianProcess:
         )
 
 
-    def fit(self, X, y):
-        self.model.fit(X, y)
+    def fit(self, dataset):
+        self.model.fit(
+            dataset.X,
+            dataset.y
+        )
 
 
     def predict(self, X, return_std=False):
