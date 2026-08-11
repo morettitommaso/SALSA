@@ -1,7 +1,6 @@
 theory/AL_theory.ipynb
 
-notebooks/01_getting_started_adaptive_sampling.ipynb
-notebooks/02_multi_fidelity_learning.ipynb
-notebooks/03_acquisition_functions_comparison.ipynb
+tutorials/02_multi_fidelity_learning.ipynb
+tutorials/03_acquisition_functions_comparison.ipynb
 
 README.md
