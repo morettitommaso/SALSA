@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import qmc
 
-from .base import AcquisitionFunction
+from ..base import AcquisitionFunction
 
 
 class alcSampling(AcquisitionFunction):

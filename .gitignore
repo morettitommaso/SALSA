@@ -1,6 +1,7 @@
 theory/AL_theory.ipynb
 
 tutorials/02_multi_fidelity_learning.ipynb
-tutorials/03_acquisition_functions_comparison.ipynb
+tutorials/03_bayesian_optimization.ipynb
+tutorials/04_acquisition_functions_comparison.ipynb
 
 README.md
