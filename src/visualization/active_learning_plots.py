@@ -5,11 +5,7 @@ import numpy as np
 class ActiveLearningPlotter:
 
 
-    def __init__(
-        self,
-        problem,
-        evaluator
-    ):
+    def __init__(self, problem, evaluator):
 
         self.problem = problem
         self.evaluator = evaluator
@@ -44,13 +40,7 @@ class ActiveLearningPlotter:
 
 
         plt.figure(figsize=(7,6))
-
-        plt.contourf(
-            X1,
-            X2,
-            Y,
-            levels=30
-        )
+        plt.contourf(X1, X2, Y, levels=30)
 
 
         plt.scatter(
@@ -64,11 +54,8 @@ class ActiveLearningPlotter:
 
         plt.xlabel("x1")
         plt.ylabel("x2")
-
         plt.title(title)
-
         plt.legend()
-
         plt.show()
 
 
@@ -98,16 +85,9 @@ class ActiveLearningPlotter:
 
         STD = std.reshape(n,n)
 
-
         plt.figure(figsize=(7,6))
 
-
-        plt.contourf(
-            X1,
-            X2,
-            STD,
-            levels=30
-        )
+        plt.contourf(X1, X2, STD, levels=30)
 
 
         plt.scatter(
@@ -115,7 +95,7 @@ class ActiveLearningPlotter:
             X_train[:,1],
             c="red",
             s=40,
-            label="HF samples"
+            # label="HF samples"
         )
 
 
@@ -134,14 +114,10 @@ class ActiveLearningPlotter:
 
 
 
-    def plot_learning_curve(
-        self,
-        mse_history
-    ):
+    def plot_learning_curve(self, mse_history):
         """
         MSE reduction during active learning.
         """
-
 
         plt.figure(figsize=(7,5))
 
@@ -153,24 +129,10 @@ class ActiveLearningPlotter:
         )
 
 
-        plt.xlabel(
-            "HF evaluations"
-        )
-
-        plt.ylabel(
-            "MSE"
-        )
-
-        plt.yscale(
-            "log"
-        )
-
-
-        plt.title(
-            "Active learning convergence"
-        )
-
+        plt.xlabel("Evaluations")
+        plt.ylabel("MSE")
+        plt.yscale("log")
+        plt.title("Active learning convergence")
 
         plt.grid()
-
         plt.show()

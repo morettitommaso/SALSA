@@ -13,6 +13,8 @@ class Branin(Problem):
             [-5, 10],
             [0, 15]
         ])
+        self.min = 0.39788735772973816
+        self.max = 308.1290963265
 
     def evaluate(self, X):
 

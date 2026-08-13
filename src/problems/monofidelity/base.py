@@ -7,6 +7,8 @@ class Problem(ABC):
         self.name = None
         self.dimension = None
         self.bounds = None
+        self.min = None
+        self.max = None
 
     @abstractmethod
     def evaluate(self, X):
