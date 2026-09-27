@@ -5,8 +5,8 @@
 A lightweight, modular Python framework for **Active Learning** (including 
 multi-fidelity setups) and **Bayesian Optimization** experiments.
 
-SALSA provides clean abstractions for the core components of a BO/AL loop — 
-surrogate models, acquisition functions, samplers, and objective functions — 
+SALSA provides clean abstractions for the core components of a BO/AL loop - 
+surrogate models, acquisition functions, samplers, and objective functions - 
 so you can swap them in and out without rewriting your experiment code.
 
 ## Origin
@@ -20,12 +20,12 @@ with the implementation side of the BO/AL world.
 
 ## Features
 
-- Modular surrogate models (Gaussian Processes, ...)
+- Modular surrogate models (Gaussian Processes)
 - Standard acquisition functions: Expected Improvement (EI), 
   Probability of Improvement (PI), Upper Confidence Bound (UCB)
 - Multi-fidelity optimization support
 - Active learning samplers
-- Ready-to-use benchmark problems (Branin, ...) as reference implementations
+- Ready-to-use benchmark problems (Branin, currin, forrester, hartmann, ...) as reference implementations
 - Jupyter notebook tutorials
 
 ## Installation
@@ -107,9 +107,9 @@ src/
 
 ## Tutorials
 
-- `notebooks/01_getting_started.ipynb` | basic BO loop  
+- `notebooks/01_getting_started.ipynb` | ALM & ALC Active Learning examples 
 - `notebooks/02_multi_fidelity_learning.ipynb` | multi-fidelity setup  
-- `notebooks/03_bayesian_optimization.ipynb` | full experiment  
+- `notebooks/03_bayesian_optimization.ipynb` | Bayesian Optimization framework
 
 
 ## Possible future implementations
