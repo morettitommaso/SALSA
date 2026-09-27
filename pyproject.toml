@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "salsa"
+version = "0.1.0"
+description = "A modular Python framework for Bayesian Optimization and Active Learning experiments"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Tommaso Moretti" }
+]
+keywords = ["bayesian-optimization", "active-learning", "machine-learning", "gaussian-processes"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "scikit-learn>=1.0",
+    "matplotlib>=3.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter>=1.0",
+    "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/morettitommaso/SALSA"
+Repository = "https://github.com/morettitommaso/SALSA"
+
+[tool.setuptools.packages.find]
+where = ["src"]

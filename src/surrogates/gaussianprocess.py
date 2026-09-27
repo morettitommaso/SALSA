@@ -1,4 +1,7 @@
+import warnings
+
 import numpy as np
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF
 from sklearn.gaussian_process.kernels import ConstantKernel as C
@@ -17,6 +20,8 @@ class GaussianProcess:
 
         if kernel is None:
             kernel = C(1.0) * RBF(1.0)
+
+        warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
         self.model = GaussianProcessRegressor(
 

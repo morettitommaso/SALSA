@@ -76,19 +76,13 @@ class ActiveLearningPlotter:
                 "Uncertainty plot available only for 2D problems"
             )
 
-
         n = int(np.sqrt(len(X_test)))
-
-
         X1 = X_test[:,0].reshape(n,n)
         X2 = X_test[:,1].reshape(n,n)
 
         STD = std.reshape(n,n)
-
         plt.figure(figsize=(7,6))
-
         plt.contourf(X1, X2, STD, levels=30)
-
 
         plt.scatter(
             X_train[:,0],
@@ -103,11 +97,7 @@ class ActiveLearningPlotter:
             label="Std"
         )
 
-
         plt.title(title)
-
-        plt.legend()
-
         plt.show()
 
 
@@ -121,18 +111,15 @@ class ActiveLearningPlotter:
 
         plt.figure(figsize=(7,5))
 
-
         plt.plot(
             range(len(mse_history)),
             mse_history,
             marker="o"
         )
 
-
         plt.xlabel("Evaluations")
         plt.ylabel("MSE")
         plt.yscale("log")
         plt.title("Active learning convergence")
-
         plt.grid()
         plt.show()
