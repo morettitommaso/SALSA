@@ -20,13 +20,13 @@ with the implementation side of the BO/AL world.
 
 ## Features
 
-- Modular surrogate models (Gaussian Processes)
-- Standard acquisition functions: Expected Improvement (EI), 
-  Probability of Improvement (PI), Upper Confidence Bound (UCB)
-- Multi-fidelity optimization support
-- Active learning samplers
-- Ready-to-use benchmark problems (Branin, currin, forrester, hartmann, ...) as reference implementations
-- Jupyter notebook tutorials
+- Modular surrogate models (Gaussian Processes)  
+- Standard acquisition functions: Expected Improvement (EI),   
+  Probability of Improvement (PI), Upper Confidence Bound (UCB)  
+- Multi-fidelity optimization support  
+- Active learning samplers  
+- Ready-to-use benchmark problems (Branin, currin, forrester, hartmann, ...) as reference implementations  
+- Jupyter notebook tutorials  
 
 ## Installation
 
